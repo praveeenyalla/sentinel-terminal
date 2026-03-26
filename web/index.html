@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sentinel Terminal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css">
+  <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+  <div class="noise"></div>
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="brand-block">
+        <div class="brand-title">SENTINEL / GLOBAL INTELLIGENCE TERMINAL</div>
+        <div class="brand-subtitle">Java 8 core | browser-side analysis | globe telemetry</div>
+      </div>
+      <div class="status-strip">
+        <div class="status-card">
+          <span class="label">FPS</span>
+          <span id="fps-value" class="value">0</span>
+        </div>
+        <div class="status-card">
+          <span class="label">LOAD</span>
+          <span id="load-value" class="value">--</span>
+        </div>
+        <div class="status-card">
+          <span class="label">ALERTS</span>
+          <span id="alerts-value" class="value">--</span>
+        </div>
+        <div class="status-card">
+          <span class="label">MODE</span>
+          <span id="mode-value" class="value">LOCAL</span>
+        </div>
+      </div>
+    </header>
+
+    <main class="layout-grid">
+      <aside class="panel left-panel">
+        <section class="panel-section">
+          <div class="section-heading">COMMAND</div>
+          <div class="command-bar">
+            <span class="command-prefix">&gt;</span>
+            <input id="command-input" type="text" autocomplete="off" spellcheck="false" placeholder="HELP, LAYER cyber, WATCH BTC, REGION europe">
+          </div>
+          <div id="command-response" class="command-response">Bootstrapping terminal state...</div>
+        </section>
+
+        <section class="panel-section grow">
+          <div class="section-heading">DATA LAYERS</div>
+          <div id="layer-list" class="layer-list"></div>
+        </section>
+
+        <section class="panel-section">
+          <div class="section-heading">REGIONAL LOAD</div>
+          <div id="region-list" class="region-list"></div>
+        </section>
+      </aside>
+
+      <section class="panel map-panel">
+        <div class="map-overlay top-left">
+          <div class="overlay-title">LIVE GLOBE</div>
+          <div class="overlay-copy">40+ intelligence layers, 1.2k active markers, raw DOM panels for speed.</div>
+        </div>
+        <div class="map-overlay top-right">
+          <div class="overlay-title">PIPELINE</div>
+          <div id="pipeline-value" class="overlay-copy">RSS -> edge -> Java core -> browser worker</div>
+        </div>
+        <div id="map"></div>
+      </section>
+
+      <aside class="panel right-panel">
+        <section class="panel-section grow">
+          <div class="section-heading">THREAT FEED</div>
+          <div id="feed-list" class="feed-list"></div>
+        </section>
+
+        <section class="panel-section">
+          <div class="section-heading">LOCAL ANALYSIS</div>
+          <div id="analysis-list" class="analysis-list"></div>
+        </section>
+      </aside>
+    </main>
+
+    <section class="panel market-panel">
+      <div class="section-heading">MARKETS / SYSTEM PULSE</div>
+      <div id="market-grid" class="market-grid"></div>
+    </section>
+  </div>
+
+  <script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
+  <script src="/assets/app.js" type="module"></script>
+</body>
+</html>

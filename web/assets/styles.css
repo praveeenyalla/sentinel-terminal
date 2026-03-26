@@ -1,0 +1,441 @@
+:root {
+  --bg-0: #05070b;
+  --bg-1: #0c1117;
+  --bg-2: #111827;
+  --panel: rgba(8, 13, 19, 0.85);
+  --panel-alt: rgba(12, 18, 26, 0.92);
+  --border: rgba(255, 179, 71, 0.22);
+  --text: #f6f3e7;
+  --muted: #8d9aae;
+  --accent: #ffb347;
+  --accent-2: #f94144;
+  --good: #70e000;
+  --cyan: #4cc9f0;
+  --grid: rgba(255, 179, 71, 0.06);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(76, 201, 240, 0.1), transparent 28%),
+    radial-gradient(circle at 80% 18%, rgba(255, 107, 26, 0.16), transparent 22%),
+    linear-gradient(180deg, #020408 0%, #060a10 45%, #04060a 100%);
+  color: var(--text);
+  font-family: "Rajdhani", sans-serif;
+  overflow: hidden;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 28px 28px;
+  pointer-events: none;
+}
+
+.noise {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.04;
+  background-image:
+    radial-gradient(circle at 25% 25%, #ffffff 0.6px, transparent 0.7px),
+    radial-gradient(circle at 75% 75%, #ffffff 0.6px, transparent 0.7px);
+  background-size: 18px 18px;
+}
+
+.app-shell {
+  position: relative;
+  display: grid;
+  grid-template-rows: 82px 1fr 210px;
+  gap: 12px;
+  height: 100vh;
+  padding: 12px;
+}
+
+.topbar,
+.panel {
+  background: linear-gradient(180deg, rgba(10, 14, 20, 0.92), rgba(8, 12, 18, 0.85));
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  box-shadow: 0 0 0 1px rgba(255, 179, 71, 0.04), 0 18px 48px rgba(0, 0, 0, 0.32);
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+}
+
+.brand-title {
+  letter-spacing: 0.18em;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.brand-subtitle,
+.overlay-copy,
+.command-response,
+.layer-meta,
+.feed-meta,
+.analysis-body,
+.market-meta,
+.region-row {
+  font-family: "IBM Plex Mono", monospace;
+}
+
+.brand-subtitle {
+  margin-top: 6px;
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+
+.status-strip {
+  display: grid;
+  grid-template-columns: repeat(4, 90px);
+  gap: 10px;
+}
+
+.status-card {
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 179, 71, 0.14);
+}
+
+.status-card .label {
+  display: block;
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  color: var(--muted);
+}
+
+.status-card .value {
+  display: block;
+  margin-top: 4px;
+  font-size: 1.35rem;
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.layout-grid {
+  display: grid;
+  grid-template-columns: 310px 1fr 350px;
+  gap: 12px;
+  min-height: 0;
+}
+
+.panel {
+  min-height: 0;
+}
+
+.left-panel,
+.right-panel {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+
+.right-panel {
+  grid-template-rows: 1fr 250px;
+}
+
+.map-panel {
+  position: relative;
+  overflow: hidden;
+}
+
+#map {
+  position: absolute;
+  inset: 0;
+}
+
+.map-overlay {
+  position: absolute;
+  z-index: 3;
+  max-width: 280px;
+  padding: 14px 16px;
+  background: rgba(6, 10, 15, 0.74);
+  border: 1px solid rgba(255, 179, 71, 0.16);
+  border-radius: 14px;
+  backdrop-filter: blur(14px);
+}
+
+.top-left {
+  top: 14px;
+  left: 14px;
+}
+
+.top-right {
+  top: 14px;
+  right: 14px;
+}
+
+.overlay-title,
+.section-heading {
+  color: var(--accent);
+  letter-spacing: 0.18em;
+  font-size: 0.78rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.panel-section {
+  padding: 16px;
+  min-height: 0;
+}
+
+.grow {
+  min-height: 0;
+  overflow: hidden;
+}
+
+.command-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 14px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 179, 71, 0.15);
+}
+
+.command-prefix {
+  color: var(--good);
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+#command-input {
+  width: 100%;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: var(--text);
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.82rem;
+}
+
+.command-response {
+  margin-top: 12px;
+  color: var(--muted);
+  font-size: 0.78rem;
+  min-height: 34px;
+}
+
+.layer-list,
+.feed-list,
+.analysis-list,
+.region-list {
+  display: grid;
+  gap: 8px;
+  overflow: auto;
+  padding-right: 4px;
+}
+
+.layer-row,
+.feed-row,
+.analysis-row,
+.market-card,
+.region-row {
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 179, 71, 0.12);
+}
+
+.layer-row {
+  padding: 10px 12px;
+  cursor: pointer;
+  transition: transform 160ms ease, border-color 160ms ease;
+}
+
+.layer-row:hover,
+.layer-row.active {
+  transform: translateX(3px);
+  border-color: rgba(255, 179, 71, 0.38);
+}
+
+.layer-name {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  font-weight: 700;
+  font-size: 0.94rem;
+}
+
+.layer-chip {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  box-shadow: 0 0 16px currentColor;
+}
+
+.layer-meta {
+  margin-top: 6px;
+  color: var(--muted);
+  font-size: 0.74rem;
+  line-height: 1.5;
+}
+
+.feed-row,
+.analysis-row {
+  padding: 12px 14px;
+}
+
+.feed-headline,
+.analysis-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  line-height: 1.15;
+}
+
+.feed-meta,
+.analysis-body,
+.market-meta,
+.region-row {
+  margin-top: 6px;
+  color: var(--muted);
+  font-size: 0.72rem;
+  line-height: 1.55;
+}
+
+.feed-severity {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  margin-left: 8px;
+  border-radius: 999px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #04060a;
+}
+
+.market-panel {
+  padding: 16px;
+}
+
+.market-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+.market-card {
+  padding: 14px;
+}
+
+.market-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.market-symbol {
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.market-price {
+  font-size: 1.28rem;
+  font-weight: 700;
+}
+
+.market-change.positive {
+  color: var(--good);
+}
+
+.market-change.negative {
+  color: var(--accent-2);
+}
+
+.sparkline {
+  display: grid;
+  grid-auto-flow: column;
+  align-items: end;
+  gap: 3px;
+  height: 44px;
+  margin-top: 10px;
+}
+
+.sparkline span {
+  display: block;
+  border-radius: 999px 999px 2px 2px;
+  background: linear-gradient(180deg, rgba(76, 201, 240, 0.95), rgba(255, 179, 71, 0.8));
+  min-height: 4px;
+}
+
+.region-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 12px;
+}
+
+.analysis-risk {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 8px;
+  border-radius: 999px;
+  margin-top: 8px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+}
+
+@media (max-width: 1200px) {
+  .app-shell {
+    grid-template-rows: auto auto auto;
+    height: auto;
+    min-height: 100vh;
+  }
+
+  .layout-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .left-panel,
+  .right-panel {
+    grid-template-rows: auto auto auto;
+  }
+
+  .map-panel {
+    min-height: 540px;
+  }
+
+  .market-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  html,
+  body {
+    overflow: auto;
+  }
+}
+
+@media (max-width: 760px) {
+  .status-strip {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .topbar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .market-grid {
+    grid-template-columns: 1fr;
+  }
+}
