@@ -49,6 +49,11 @@
           <div id="command-response" class="command-response">Bootstrapping terminal state...</div>
         </section>
 
+        <section class="panel-section">
+          <div class="section-heading">MAP OVERLAYS</div>
+          <div id="overlay-controls" class="overlay-controls"></div>
+        </section>
+
         <section class="panel-section grow">
           <div class="section-heading">DATA LAYERS</div>
           <div id="layer-list" class="layer-list"></div>
@@ -63,11 +68,15 @@
       <section class="panel map-panel">
         <div class="map-overlay top-left">
           <div class="overlay-title">LIVE GLOBE</div>
-          <div class="overlay-copy">40+ intelligence layers, 1.2k active markers, raw DOM panels for speed.</div>
+          <div class="overlay-copy">Single-world globe with optional sea routes, ships, aircraft, and intel markers.</div>
         </div>
         <div class="map-overlay top-right">
           <div class="overlay-title">PIPELINE</div>
           <div id="pipeline-value" class="overlay-copy">RSS -> edge -> Java core -> browser worker</div>
+        </div>
+        <div class="map-overlay bottom-left detail-overlay">
+          <div class="overlay-title">FOCUS</div>
+          <div id="selection-card" class="selection-card">Click a marker, ship, aircraft, or route to inspect details here.</div>
         </div>
         <div id="map"></div>
       </section>
@@ -85,9 +94,22 @@
       </aside>
     </main>
 
-    <section class="panel market-panel">
-      <div class="section-heading">MARKETS / SYSTEM PULSE</div>
-      <div id="market-grid" class="market-grid"></div>
+    <section class="panel terminal-dock">
+      <div class="terminal-dock-header">
+        <div class="section-heading">TERMINAL DECK</div>
+        <div id="terminal-tabs" class="terminal-tabs"></div>
+      </div>
+      <div class="terminal-body">
+        <section id="terminal-view-markets" class="terminal-view active">
+          <div id="market-grid" class="market-grid"></div>
+        </section>
+        <section id="terminal-view-all-chains" class="terminal-view">
+          <div id="all-chains-grid" class="all-chains-grid"></div>
+        </section>
+        <section id="terminal-view-relationships" class="terminal-view">
+          <div id="relationship-grid" class="relationship-grid"></div>
+        </section>
+      </div>
     </section>
   </div>
 
